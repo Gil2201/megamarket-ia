@@ -7,7 +7,9 @@ páginas (SPEC §5.3) y pone el pie de página en todas las páginas.
 
 import streamlit as st
 
+from megamarket.sistema_experto_logistica import BASE_CONOCIMIENTO, leer_memoria_logistica
 from megamarket_app import componentes, tema
+from megamarket_app.memoria_logistica import csv_a_editor
 
 st.set_page_config(
     page_title="MegaMarket IA",
@@ -19,12 +21,15 @@ st.set_page_config(
 def inicializar_estado():
     """Estado compartido entre páginas, en un solo lugar (SPEC §5.3).
 
-    Por ahora todo arranca vacío; en las fases 2 y 3 se carga con los
-    datos originales cuando la lógica de megamarket/ esté portada.
+    Las claves de portafolio se llenan en la Fase 3.
     """
+    if "memoria_logistica" not in st.session_state:
+        # DataFrame editado (Clientes de la semana), arranca con el CSV original
+        st.session_state["memoria_logistica"] = csv_a_editor(leer_memoria_logistica())
     claves = {
-        "memoria_logistica": None,  # DataFrame editado (Clientes de la semana)
+        "umbrales_logistica": dict(BASE_CONOCIMIENTO["umbrales"]),  # umbrales editados (R2 y R4)
         "seleccion_semana": None,   # {ruta: {"incluidos": [...], "prioridad": {...}}}
+        "ruta_elegida": "Ambas",    # ruta que se estaba mirando en la página 1
         "candidatos": None,         # dict de candidatos editado (Qué lanzar)
         "resultado_ag": None,       # mejor portafolio, historial, empates
         "empates": None,            # portafolios empatados por criterio (Sprint 4)

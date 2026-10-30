@@ -274,3 +274,23 @@ def recorrido_completo(red, origen, clientes, destino_final=None, prioridad=None
     distancia_total += costo_final
 
     return paradas, distancia_total, orden_clientes
+
+
+def tramos_del_recorrido(red, origen, orden_clientes, destino_final=None):
+    """Parte un recorrido ya calculado en sus tramos de A*.
+
+    Función de apoyo para la app (no está en el notebook): recorre el mismo
+    orden de visita que devolvió `recorrido_completo` y vuelve a pedirle a
+    A* cada tramo, así que la suma de los km es la misma distancia_total.
+    Responde: ¿por dónde va el camión de una parada a la siguiente?
+    Devuelve una lista de {"desde", "hasta", "camino", "km"}.
+    """
+    if destino_final is None:
+        destino_final = origen
+
+    puntos = [origen] + list(orden_clientes) + [destino_final]
+    tramos = []
+    for desde, hasta in zip(puntos[:-1], puntos[1:]):
+        camino, costo = a_estrella(red, desde, hasta)
+        tramos.append({"desde": desde, "hasta": hasta, "camino": camino, "km": costo})
+    return tramos

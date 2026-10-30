@@ -10,6 +10,7 @@ from megamarket.busqueda import (
     recorrido_completo,
     red_poblado,
     red_valle_aburra,
+    tramos_del_recorrido,
 )
 from megamarket.datos import BODEGA, PLATAFORMA, clientes_poblado, clientes_valle_aburra
 
@@ -73,3 +74,19 @@ def test_a_estrella_con_traza_da_lo_mismo_que_a_estrella(nombre_ruta):
             assert traza[-1]["nodo"] == destino
             for paso in traza:
                 assert paso["f"] == pytest.approx(paso["g"] + paso["h"])
+
+
+@pytest.mark.parametrize("nombre_ruta, clientes", [
+    ("Poblado", clientes_poblado),
+    ("Valle de Aburrá", clientes_valle_aburra),
+    ("Poblado", []),
+])
+def test_tramos_suman_lo_mismo_que_el_recorrido(nombre_ruta, clientes):
+    red = REDES[nombre_ruta]
+    paradas, distancia, orden = recorrido_completo(red, BODEGA, clientes, destino_final=PLATAFORMA)
+    tramos = tramos_del_recorrido(red, BODEGA, orden, PLATAFORMA)
+    assert len(tramos) == len(orden) + 1
+    assert sum(t["km"] for t in tramos) == pytest.approx(distancia)
+    # Pegar los caminos de los tramos reconstruye las paradas
+    reconstruidas = [BODEGA] + [n for t in tramos for n in t["camino"][1:]]
+    assert reconstruidas == paradas
