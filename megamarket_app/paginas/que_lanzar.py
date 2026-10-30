@@ -3,7 +3,7 @@
 import pandas as pd
 import streamlit as st
 
-from megamarket import genetico
+from megamarket import difuso, genetico
 from megamarket.datos import CANDIDATOS, ESPACIO_BODEGA_TOTAL, PRESUPUESTO_TOTAL, SEMILLA
 from megamarket_app import componentes, formato, graficas
 from megamarket_app.azar import CANDADO_AZAR
@@ -77,6 +77,25 @@ for error in errores:
 if not errores:
     st.session_state["candidatos"] = df_a_candidatos(candidatos_editados.dropna(how="all"))
 candidatos = st.session_state["candidatos"]
+
+# --- Filtro con la nota difusa (Sprint 4): así el Sprint 2 alimenta de verdad al Sprint 3 ---
+notas = difuso.notas_de_productos(st.session_state["productos_difusos"])
+f1, f2 = st.columns([1, 2], vertical_alignment="bottom")
+usar_filtro = f1.toggle("Solo candidatos con nota difusa ≥", value=False,
+                        help="Nota de viabilidad 0–100 de la página 3 (Sprint 4).")
+umbral_nota = f2.slider("Nota mínima", 0, 100, 60, 5, disabled=not usar_filtro, label_visibility="collapsed")
+if usar_filtro:
+    fuera = [n for n in candidatos if notas.get(n) is not None and notas[n] < umbral_nota]
+    sin_nota = [n for n in candidatos if notas.get(n) is None]
+    candidatos = {n: d for n, d in candidatos.items() if n not in fuera}
+    if fuera:
+        st.caption("Quedan fuera por nota baja: " + ", ".join(
+            f"{n.replace(' Riovalle', '')} ({notas[n]:.0f})" for n in fuera))
+    if sin_nota:
+        st.caption("Sin nota difusa (se mantienen): " + ", ".join(sin_nota))
+    if len(candidatos) < 2:
+        st.error("Con ese umbral quedan menos de 2 candidatos: baja la nota mínima.", icon=":material/error:")
+        errores = errores + ["pocos candidatos"]
 
 col_restricciones, col_parametros = st.columns(2, gap="large")
 with col_restricciones:

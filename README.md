@@ -2,7 +2,7 @@
 
 App en Streamlit que reúne el proyecto de **Fundamentos de Inteligencia Artificial** (Universidad EIA)
 sobre el caso **MegaMarket SAS**: búsqueda A*, sistemas expertos, algoritmo genético y teoría de juegos,
-con lógica difusa en camino.
+y lógica difusa.
 
 > Proyecto académico — Universidad EIA. **No es un sitio oficial de Megamarket.** Las cifras operativas
 > (clientes, costos, utilidades, erosión) son ilustrativas.
@@ -17,10 +17,10 @@ La navegación sigue dos cadenas de decisión del negocio:
 |---|---|---|---|
 | Logística | 1. Clientes de la semana | Sprint 2 · Sistema experto | ¿A quién visitamos y con qué prioridad? |
 | Logística | 2. Ruta óptima | Sprint 1 · A* | ¿En qué orden y cuántos km? |
-| Portafolio | 3. Viabilidad de productos | Sprint 2 · Sistema experto | ¿La categoría cumple los 7 criterios? |
+| Portafolio | 3. Viabilidad de productos | Sprint 2 · Sistema experto + Sprint 4 · Lógica difusa | ¿Cumple los 7 criterios? ¿Con qué nota de 0 a 100? |
 | Portafolio | 4. Qué lanzar | Sprint 3A · Algoritmo genético | ¿Qué referencias caben y dejan más utilidad? |
 | Portafolio | 5. Competidor | Sprint 3B · Teoría de juegos + Minimax | ¿Y si un rival reacciona? |
-| Próximamente | 6. Desempate difuso | Sprint 4 · Lógica difusa | ¿Cuál elegimos entre portafolios empatados? |
+| Portafolio | 6. Desempate difuso | Sprint 4 · Lógica difusa | ¿Cuál elegimos entre portafolios empatados? |
 
 Las páginas se pasan resultados: el sistema experto le entrega sus clientes a la ruta, y el AG le entrega
 su portafolio al análisis del competidor. Cada página muestra cómo razonó el algoritmo, el código real
@@ -45,7 +45,7 @@ pytest -q
 
 Las pruebas verifican que los resultados sean **idénticos** a los de los notebooks de `referencia/`
 (SPEC §8): 16,8 y 18,0 km con todos los clientes, 9,9 y 14,9 km con el sistema experto, $122 M con
-2 portafolios óptimos, $95,0 M en el peor caso con Minimax, entre otros. También hay pruebas de humo
+2 portafolios óptimos, $95,0 M en el peor caso con Minimax, y 70,17 en el ejemplo de lógica difusa de clase, entre otros. También hay pruebas de humo
 que abren cada página.
 
 ## Estructura

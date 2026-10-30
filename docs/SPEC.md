@@ -392,7 +392,7 @@ El profesor quiere un agente dentro de la app. La arquitectura ya lo facilita: *
 
 ## 11. Decisiones pendientes del equipo
 1. ~~Colores de marca~~ → resuelto (§4.4). Amarillo del logo medido: `#EDC443`.
-2. **Sprint 4:** opción de diseño de `docs/SPRINT4_LOGICA_DIFUSA.md` §6. ~~Librería~~ → resuelto: `numpy` a mano, como en clase.
-3. **Datos numéricos de los productos** para la lógica difusa (los notebooks solo tienen Sí/No).
+2. ~~**Sprint 4**~~ → resuelto como propuesta: `docs/SPRINT4_DECISIONES.md` (4A opción A + 4B). Librería: `numpy` a mano, como en clase.
+3. ~~**Datos numéricos de los productos**~~ → `data/memoria_trabajo_portafolio_difusa.csv` (ilustrativos, por validar).
 4. **Requisitos del agente** que pida el profesor.
 5. ~~Versión del CSV de portafolio~~ → resuelto: la primera. ~~Estrategia evolutiva de mercadeo~~ → no hace parte del proyecto.

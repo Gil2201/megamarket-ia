@@ -62,8 +62,8 @@ paso(c2, "ruta_optima.py", "2. Ruta óptima", "¿En qué orden y cuántos km?",
 
 st.markdown("**Portafolio** — ¿qué lanzamos y qué pasa si el rival reacciona?")
 p1, g1, p2, g2, p3, g3, p4 = st.columns([4, 0.6, 4, 0.6, 4, 0.6, 4])
-paso(p1, "viabilidad.py", "3. Viabilidad", "¿La categoría cumple los 7 criterios?",
-     "Sprint 2 · Sistema experto", ":material/rule:")
+paso(p1, "viabilidad.py", "3. Viabilidad", "¿Cumple los 7 criterios? ¿Qué tanto (nota 0–100)?",
+     "Sprint 2 + Sprint 4 · Difusa", ":material/rule:")
 flecha(g1, "")
 paso(p2, "que_lanzar.py", "4. Qué lanzar", "¿Qué referencias caben y dejan más utilidad?",
      "Sprint 3A · Algoritmo genético", ":material/inventory_2:")
@@ -75,9 +75,9 @@ paso(p4, "desempate_difuso.py", "6. Desempate difuso", "¿Cuál elegimos entre p
      "Sprint 4 · Lógica difusa", ":material/blur_on:")
 
 st.caption(
-    "Nota honesta: hoy la cadena de portafolio no está conectada del todo. El sistema experto evalúa "
-    "3 *categorías* (aseo, Alquería, bebidas) y el algoritmo genético parte de 8 *referencias Riovalle* "
-    "que se suponen viables. El Sprint 4 busca cerrar ese hueco con una nota difusa por referencia."
+    "El Sprint 4 cierra la cadena de portafolio: la lógica difusa le pone una **nota de 0 a 100** a las "
+    "3 categorías del sistema experto y a las 8 referencias Riovalle; esa nota puede filtrar los "
+    "candidatos del algoritmo genético y desempata los portafolios que quedan iguales."
 )
 
 # =============================================================================
@@ -88,7 +88,7 @@ SPRINTS = [
     ("Sprint 1", "Búsqueda A*", "Ruta óptima entre la bodega, los clientes y la plataforma.", "Completado", "green"),
     ("Sprint 2", "Sistemas expertos", "Quién entra en la ruta y si una categoría es viable.", "Completado", "green"),
     ("Sprint 3", "Algoritmo genético + teoría de juegos", "Qué lanzar y cómo protegerse de un rival.", "Completado", "green"),
-    ("Sprint 4", "Lógica difusa", "Nota de viabilidad 0–100 y desempate de portafolios.", "En diseño", "orange"),
+    ("Sprint 4", "Lógica difusa", "Nota de viabilidad 0–100 y desempate de portafolios.", "Propuesta lista", "blue"),
 ]
 for columna, (nombre, tecnica, descripcion, estado, color) in zip(st.columns(4), SPRINTS):
     with columna.container(border=True, height="stretch"):

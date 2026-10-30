@@ -34,3 +34,8 @@ def km(valor, decimales=1):
 def pct(fraccion, decimales=1):
     """Porcentaje a partir de una fracción (0.059 -> 5,9 %)."""
     return f"{_numero(fraccion * 100, decimales)} %"
+
+
+def decimal(valor, decimales=1):
+    """Número con coma decimal: 60.4 -> "60,4"."""
+    return _numero(valor, decimales)

@@ -4,7 +4,7 @@ App en Streamlit que unifica el proyecto de **Fundamentos de Inteligencia Artifi
 
 ## Antes de cualquier cosa
 - Lee `docs/SPEC.md` completo. Es el diseño acordado.
-- Para el Sprint 4 lee `docs/SPRINT4_LOGICA_DIFUSA.md`. No lo construyas hasta que el usuario confirme que las decisiones de su sección 6 están cerradas.
+- Para el Sprint 4 lee `docs/SPRINT4_LOGICA_DIFUSA.md` y `docs/SPRINT4_DECISIONES.md` (decisiones de la sección 6 cerradas como propuesta para validar con el profesor; ya está construido en `megamarket/difuso.py`).
 - Los notebooks de `referencia/` son la **fuente de verdad** del comportamiento. Son de solo lectura: nunca los edites.
 - Trabaja por las fases de la sección 7 del SPEC. Al empezar cada fase, propón un plan y espera aprobación.
 

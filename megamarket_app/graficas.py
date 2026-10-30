@@ -2,7 +2,7 @@
 
 import plotly.graph_objects as go
 
-from megamarket_app.tema import CRITERIO_AG, PALETA, SEMANTICOS
+from megamarket_app.tema import CRITERIO_AG, DIFUSO, PALETA, SEMANTICOS
 
 FUENTE = "Montserrat, sans-serif"
 
@@ -104,3 +104,52 @@ def costo_de_protegerse(puntos, destacados):
             hovertemplate=f"{nombre}<br>Esperada $%{{x:.1f}} M · Peor caso $%{{y:.1f}} M<extra></extra>",
         ))
     return _estilo(fig, "Utilidad esperada (millones COP)", "Utilidad en el peor caso (millones COP)", 440)
+
+
+def funciones_pertenencia(var, valor=None, alto=260):
+    """Conjuntos de una variable difusa con la línea del valor actual (como la celda 21 de clase)."""
+    colores = list(DIFUSO.values())
+    fig = go.Figure()
+    for i, (etiqueta, curva) in enumerate(var["conjuntos"].items()):
+        fig.add_trace(go.Scatter(
+            x=var["universo"], y=curva, name=etiqueta.capitalize(), mode="lines",
+            line=dict(color=colores[i], width=3),
+            hovertemplate=f"{etiqueta}: μ=%{{y:.2f}} en x=%{{x:.1f}}<extra></extra>",
+        ))
+    if valor is not None:
+        fig.add_vline(x=valor, line_dash="dash", line_color=PALETA["azul_noche"],
+                      annotation_text=f"{valor:.1f}", annotation_position="top")
+    fig.update_yaxes(range=[-0.03, 1.08])
+    return _estilo(fig, var["nombre"], "Pertenencia μ", alto)
+
+
+def salida_agregada(var, agregado, valor):
+    """Salida agregada (máximo de las reglas recortadas) y su centroide."""
+    colores = list(DIFUSO.values())
+    fig = go.Figure()
+    for i, (etiqueta, curva) in enumerate(var["conjuntos"].items()):
+        fig.add_trace(go.Scatter(
+            x=var["universo"], y=curva, name=etiqueta.capitalize(), mode="lines",
+            line=dict(color=colores[i], width=1.5, dash="dot"), hoverinfo="skip",
+        ))
+    fig.add_trace(go.Scatter(
+        x=var["universo"], y=agregado, name="Salida agregada", mode="lines", fill="tozeroy",
+        line=dict(color=PALETA["azul_rey"], width=2.5),
+        hovertemplate="μ=%{y:.2f} en %{x:.1f}<extra></extra>",
+    ))
+    fig.add_vline(x=valor, line_dash="dash", line_color=SEMANTICOS["excluir"],
+                  annotation_text=f"Centroide = {valor:.1f}".replace(".", ","), annotation_position="bottom left")
+    fig.update_yaxes(range=[-0.03, 1.12])
+    return _estilo(fig, var["nombre"], "Pertenencia μ", 280)
+
+
+def notas_viabilidad(nombres, notas, colores):
+    """Barras horizontales con la nota 0–100 de cada producto."""
+    fig = go.Figure(go.Bar(
+        x=notas, y=nombres, orientation="h", marker_color=colores,
+        text=[f"{n:.1f}" for n in notas], textposition="outside",
+        hovertemplate="%{y}: %{x:.1f} / 100<extra></extra>",
+    ))
+    fig.update_yaxes(autorange="reversed")
+    fig.update_xaxes(range=[0, 105])
+    return _estilo(fig, "Nota de viabilidad (0–100)", "", 60 + 34 * len(nombres))

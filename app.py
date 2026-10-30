@@ -9,6 +9,7 @@ import copy
 
 import streamlit as st
 
+from megamarket import difuso
 from megamarket.datos import CANDIDATOS, EROSION, ESPACIO_BODEGA_TOTAL, PRESUPUESTO_TOTAL
 from megamarket.sistema_experto_logistica import BASE_CONOCIMIENTO, leer_memoria_logistica
 from megamarket_app import componentes, tema
@@ -26,6 +27,9 @@ def inicializar_estado():
 
     Todo arranca con los datos originales de los notebooks.
     """
+    if "productos_difusos" not in st.session_state:
+        # datos de la nota difusa (página 3): {producto: {"tipo", "C2", criterios numéricos}}
+        st.session_state["productos_difusos"] = difuso.construir_productos_difusos(difuso.leer_memoria_difusa())
     if "memoria_logistica" not in st.session_state:
         # DataFrame editado (Clientes de la semana), arranca con el CSV original
         st.session_state["memoria_logistica"] = csv_a_editor(leer_memoria_logistica())
@@ -38,6 +42,7 @@ def inicializar_estado():
         "erosion": dict(EROSION),   # erosión editada (Competidor)
         "resultado_ag": None,       # mejor portafolio, historial, empates
         "empates": None,            # portafolios empatados por criterio (Sprint 4)
+        "desempate": None,          # ganador del desempate difuso (página 6)
     }
     for clave, valor in claves.items():
         st.session_state.setdefault(clave, valor)
@@ -65,10 +70,10 @@ paginas = {
                 icon=":material/inventory_2:", url_path="que-lanzar"),
         st.Page(f"{RUTA}/competidor.py", title="5. Competidor",
                 icon=":material/swords:", url_path="competidor"),
-    ],
-    "Próximamente": [
         st.Page(f"{RUTA}/desempate_difuso.py", title="6. Desempate difuso",
                 icon=":material/blur_on:", url_path="desempate-difuso"),
+    ],
+    "Próximamente": [
         st.Page(f"{RUTA}/asistente.py", title="Asistente MegaMarket",
                 icon=":material/smart_toy:", url_path="asistente"),
     ],
