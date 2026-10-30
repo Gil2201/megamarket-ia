@@ -194,7 +194,7 @@ Usar `st.navigation` con `st.Page` agrupadas en secciones (no la carpeta `pages/
   | `azul_noche` | `#001B33` | barra superior, pie, franjas | encabezado/hero, barra lateral, texto de títulos |
   | `azul_rey` | `#2E448D` | botón "Contáctanos" | `primaryColor`: botones, enlaces, elementos activos |
   | `azul_medio` | `#0F487A` | acentos | series secundarias de gráficas, hover |
-  | `amarillo_globo` | ≈ `#F2B705` *(estimado del logo; verificar con el PNG)* | globo del logo | acento puntual (chips de sprint, destacados), nunca texto sobre blanco |
+  | `amarillo_globo` | `#EDC443` *(medido en el PNG del logo)* | globo del logo | acento puntual (chips de sprint, destacados), nunca texto sobre blanco |
   | `texto` | `#212529` | cuerpo | `textColor` |
   | `gris` | `#636363` | texto secundario | leyendas, notas |
   | `fondo_suave` | `#F4F6F9` | — | `secondaryBackgroundColor`, tarjetas |
@@ -391,7 +391,7 @@ El profesor quiere un agente dentro de la app. La arquitectura ya lo facilita: *
 - Cambiar los algoritmos de los sprints 1–3.
 
 ## 11. Decisiones pendientes del equipo
-1. ~~Colores de marca~~ → resuelto (§4.4). Falta confirmar el amarillo exacto del logo.
+1. ~~Colores de marca~~ → resuelto (§4.4). Amarillo del logo medido: `#EDC443`.
 2. **Sprint 4:** opción de diseño de `docs/SPRINT4_LOGICA_DIFUSA.md` §6. ~~Librería~~ → resuelto: `numpy` a mano, como en clase.
 3. **Datos numéricos de los productos** para la lógica difusa (los notebooks solo tienen Sí/No).
 4. **Requisitos del agente** que pida el profesor.

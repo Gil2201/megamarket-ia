@@ -20,7 +20,7 @@ chartCategoricalColors = ["#2E448D", "#0F487A", "#EB6834", "#636363"]
 backgroundColor = "#001B33"           # azul_noche
 secondaryBackgroundColor = "#0F2A47"
 textColor = "#FFFFFF"
-primaryColor = "#F2B705"              # amarillo_globo (estimado): página activa
+primaryColor = "#EDC443"              # amarillo_globo (medido en el logo): página activa
 borderColor = "#0F487A"
 
 [client]

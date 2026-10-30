@@ -11,7 +11,7 @@ PALETA = {
     "azul_noche": "#001B33",      # encabezado/hero, barra lateral, títulos
     "azul_rey": "#2E448D",        # primaryColor: botones, enlaces, activos
     "azul_medio": "#0F487A",      # series secundarias de gráficas, hover
-    "amarillo_globo": "#F2B705",  # estimado del logo: acento puntual, nunca texto sobre blanco
+    "amarillo_globo": "#EDC443",  # medido en el PNG del logo: acento puntual, nunca texto sobre blanco
     "texto": "#212529",
     "gris": "#636363",            # texto secundario, leyendas, notas
     "fondo_suave": "#F4F6F9",     # tarjetas
@@ -125,6 +125,10 @@ def aplicar_css():
             color: {p["gris"]};
             font-size: 0.8rem;
             text-align: center;
+        }}
+        @media (max-width: 640px) {{
+            .mm-titulo {{ font-size: 1.45rem; }}
+            .mm-hero {{ padding: 1.4rem 1.2rem 1.2rem 1.2rem; }}
         }}
         </style>
         """,

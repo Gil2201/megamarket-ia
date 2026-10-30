@@ -16,7 +16,7 @@ from megamarket_app.memoria_logistica import csv_a_editor
 
 st.set_page_config(
     page_title="MegaMarket IA",
-    page_icon=":material/local_shipping:",
+    page_icon="assets/icono-megamarket.png",
     layout="wide",
 )
 
@@ -45,7 +45,7 @@ def inicializar_estado():
 
 inicializar_estado()
 tema.aplicar_css()
-st.logo("assets/logo-megamarket-blanco.png", size="large")
+st.logo("assets/logo-megamarket-blanco.png", size="large", icon_image="assets/icono-megamarket.png")
 
 RUTA = "megamarket_app/paginas"
 paginas = {
