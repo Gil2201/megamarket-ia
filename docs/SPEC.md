@@ -188,6 +188,7 @@ Usar `st.navigation` con `st.Page` agrupadas en secciones (no la carpeta `pages/
 
 ### 4.4 Diseño visual
 - Limpio y profesional: fondo claro, mucho espacio en blanco, tarjetas con borde sutil, sin degradados ni decoración innecesaria.
+  **Excepción: la página de Inicio** funciona como landing (referencias: stripe.com y puygroup.com): titular grande en dos tonos, botones píldora, banda azul con cifras calculadas en vivo, tarjetas bento con miniaturas y un degradado suave solo en la decoración del hero. Su CSS vive en `tema.aplicar_css_inicio()`.
 - **Colores de marca** (leídos del sitio megamarket.com.co):
   | Token | Hex | Uso en el sitio | Uso en la app |
   |---|---|---|---|
