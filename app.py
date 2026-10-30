@@ -5,8 +5,11 @@ Define la navegación (SPEC §4.1), inicializa el estado compartido entre
 páginas (SPEC §5.3) y pone el pie de página en todas las páginas.
 """
 
+import copy
+
 import streamlit as st
 
+from megamarket.datos import CANDIDATOS, EROSION, ESPACIO_BODEGA_TOTAL, PRESUPUESTO_TOTAL
 from megamarket.sistema_experto_logistica import BASE_CONOCIMIENTO, leer_memoria_logistica
 from megamarket_app import componentes, tema
 from megamarket_app.memoria_logistica import csv_a_editor
@@ -21,7 +24,7 @@ st.set_page_config(
 def inicializar_estado():
     """Estado compartido entre páginas, en un solo lugar (SPEC §5.3).
 
-    Las claves de portafolio se llenan en la Fase 3.
+    Todo arranca con los datos originales de los notebooks.
     """
     if "memoria_logistica" not in st.session_state:
         # DataFrame editado (Clientes de la semana), arranca con el CSV original
@@ -30,7 +33,9 @@ def inicializar_estado():
         "umbrales_logistica": dict(BASE_CONOCIMIENTO["umbrales"]),  # umbrales editados (R2 y R4)
         "seleccion_semana": None,   # {ruta: {"incluidos": [...], "prioridad": {...}}}
         "ruta_elegida": "Ambas",    # ruta que se estaba mirando en la página 1
-        "candidatos": None,         # dict de candidatos editado (Qué lanzar)
+        "candidatos": copy.deepcopy(CANDIDATOS),  # dict de candidatos editado (Qué lanzar)
+        "restricciones": {"presupuesto": PRESUPUESTO_TOTAL, "espacio": ESPACIO_BODEGA_TOTAL},
+        "erosion": dict(EROSION),   # erosión editada (Competidor)
         "resultado_ag": None,       # mejor portafolio, historial, empates
         "empates": None,            # portafolios empatados por criterio (Sprint 4)
     }
