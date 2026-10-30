@@ -1,1 +1,12 @@
+# macOS
 .DS_Store
+
+# Python
+.venv/
+__pycache__/
+
+# Secretos de Streamlit
+.streamlit/secrets.toml
+
+# Configuración local de Claude Code
+.claude/

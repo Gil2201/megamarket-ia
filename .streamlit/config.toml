@@ -1,0 +1,30 @@
+# Tema de la app MegaMarket IA (paleta de marca, SPEC §4.4).
+# Los colores viven SOLO aquí y en megamarket_app/tema.py.
+
+[theme]
+base = "light"
+primaryColor = "#2E448D"              # azul_rey: botones, enlaces, elementos activos
+backgroundColor = "#FFFFFF"           # blanco
+secondaryBackgroundColor = "#F4F6F9"  # fondo_suave: tarjetas, entradas
+textColor = "#212529"                 # texto
+linkColor = "#2E448D"
+borderColor = "#E3E7EE"
+font = "Montserrat:https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap, sans-serif"
+headingFont = "Montserrat:https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap, sans-serif"
+baseRadius = "0.5rem"
+showSidebarBorder = false
+# Colores de las gráficas nativas: azul_rey, azul_medio, naranja Minimax, gris
+chartCategoricalColors = ["#2E448D", "#0F487A", "#EB6834", "#636363"]
+
+[theme.sidebar]
+backgroundColor = "#001B33"           # azul_noche
+secondaryBackgroundColor = "#0F2A47"
+textColor = "#FFFFFF"
+primaryColor = "#F2B705"              # amarillo_globo (estimado): página activa
+borderColor = "#0F487A"
+
+[client]
+toolbarMode = "minimal"
+
+[server]
+runOnSave = true
