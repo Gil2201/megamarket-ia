@@ -292,7 +292,6 @@
       },
       "hechos": {
         "clientes_incluidos": 9,
-        "clientes_total": 12,
         "km_poblado": 19.7,
         "km_valle": 19.6,
         "km_total": 39.3
@@ -408,7 +407,6 @@
       "categoria": "cadena",
       "pregunta": "Si solo aceptamos productos con nota difusa de al menos 60, ¿qué lanzamos y cuánta utilidad perdemos frente al óptimo sin filtro?",
       "herramientas": [
-        "nota_viabilidad",
         "optimizar_portafolio"
       ],
       "argumentos_clave": {
@@ -438,7 +436,6 @@
       "categoria": "cadena",
       "pregunta": "Hay dos portafolios que aguantan igual de bien a un rival. ¿Cuál deberíamos elegir y por qué?",
       "herramientas": [
-        "analizar_competidor",
         "desempatar_portafolios"
       ],
       "argumentos_clave": {

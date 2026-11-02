@@ -1,0 +1,338 @@
+﻿id;repeticion;pregunta;respuesta;claridad (0/1);comentario
+P01;1;¿Cuántos kilómetros recorre esta semana el camión de la ruta Poblado y en qué orden visita a los clientes?;"Esta semana el camión de la ruta **Poblado** recorre un total de **9,9 km**.
+
+El orden en el que visita a los clientes es el siguiente:
+1. **EAFIT La Bodeguita**
+2. **Supermercado Merka 10**
+3. **Mercados Verona**
+4. **Five Sisters**
+
+*Algoritmos utilizados: Sistema Experto para selección de clientes (Sprint 2) y Búsqueda A* para optimización de ruta (Sprint 1).*";;
+P01;2;¿Cuántos kilómetros recorre esta semana el camión de la ruta Poblado y en qué orden visita a los clientes?;"Esta semana el camión de la ruta **Poblado** recorre **9,9 km**.
+
+El orden de visita a los clientes es el siguiente:
+1. **EAFIT La Bodeguita** (Prioridad Alta)
+2. **Supermercado Merka 10** (Prioridad Alta)
+3. **Mercados Verona** (Prioridad Media)
+4. **Five Sisters** (Prioridad Baja)
+
+*(Nota: La ruta inicia en la Bodega Olaya Herrera y finaliza en la Plataforma Logística).*
+
+**Algoritmo utilizado:** Sistema Experto (Sprint 2) para definir los clientes y su prioridad, y Búsqueda A* / Vecino más cercano por tandas de prioridad (Sprint 1) para calcular el recorrido óptimo.";;
+P02;1;Si el camión del Valle de Aburrá tuviera que visitar a todos sus clientes, ¿cuántos km recorrería?;"Si el camión del Valle de Aburrá visita a todos sus clientes, recorrería **18,0 km**.
+
+*Algoritmo utilizado: Búsqueda A* (Sprint 1).*";;
+P02;2;Si el camión del Valle de Aburrá tuviera que visitar a todos sus clientes, ¿cuántos km recorrería?;"Si el camión de la ruta del **Valle de Aburrá** visitara a **todos** sus clientes, recorrería **18,0 km**.
+
+**El orden de entrega sería:**
+1. CEDI Vaquita Itagüí
+2. CEDI Merkepaisa
+3. CEDI Supermú
+4. CEDI Euro La Estrella
+
+---
+*Algoritmo utilizado: Búsqueda A* (Sprint 1).*";;
+P03;1;¿La categoría de productos Alquería es viable para MegaMarket?;"**No**, la categoría de productos Alquería **no es viable** para MegaMarket.
+
+**Razón:**
+* Incumple el criterio **C6** (Vida útil de mínimo 6 meses).
+
+*Algoritmo utilizado: Sistema experto de portafolio (Sprint 2).*";;
+P03;2;¿La categoría de productos Alquería es viable para MegaMarket?;"**No**, la categoría de productos Alquería (lácteos) **no es viable** para MegaMarket.
+
+**Razón:**
+Incumple el criterio **C6** (Vida útil), el cual exige un mínimo de 6 meses de vida útil.
+
+---
+*Algoritmo utilizado: Sistema experto de portafolio (Sprint 2).*";;
+P04;1;¿Qué referencias Riovalle deberíamos lanzar este semestre con el presupuesto actual?;"Con el presupuesto actual de **$70,0 M** y un espacio disponible de **25 posiciones**, existen **dos portafolios empatados** que maximizan la utilidad esperada alcanzando **$122,0 M**:
+
+1. **Portafolio A:**
+   * Mix de Frutos Secos
+   * Barra Energética
+   * Jugo Natural
+   * *Costo:* $70,0 M | *Espacio:* 22 posiciones
+
+2. **Portafolio B:**
+   * Higo Deshidratado
+   * Jugo Natural
+   * Café Molido
+   * *Costo:* $70,0 M | *Espacio:* 22 posiciones
+
+ Ambos portafolios requieren el mismo presupuesto y espacio en bodega, logrando exactamente la misma utilidad máxima.
+
+**Algoritmo utilizado:** Algoritmo genético (Sprint 3A) validado con fuerza bruta.";;
+P04;2;¿Qué referencias Riovalle deberíamos lanzar este semestre con el presupuesto actual?;"Con el presupuesto actual de **$70,0 M** y **25** posiciones de bodega disponibles (utilizando **22**), existen dos portafolios óptimos empatados que generan la misma utilidad esperada de **$122,0 M**:
+
+1. **Higo Deshidratado, Jugo Natural y Café Molido** (Costo: **$70,0 M**, Espacio: **22**)
+2. **Mix de Frutos Secos, Barra Energética y Jugo Natural** (Costo: **$70,0 M**, Espacio: **22**)
+
+---
+**Algoritmo utilizado:** Algoritmo genético (Sprint 3A) validado con fuerza bruta.";;
+P05;1;¿Por qué Fruver del Río no entra en la ruta de esta semana si el mercaderista reportó stock bajo?;"Aunque **Fruver del Río** cumple la regla R1 (el mercaderista reportó stock bajo en su visita, lo que le otorgaría prioridad ALTA), **no entra en la ruta debido a la regla de veto R4**:
+
+* El costo de flete estimado ($50,000) representa el **5.9%** del valor de la factura del pedido ($850,000), superando el umbral máximo permitido del **4%**.
+
+---
+**Algoritmo utilizado:** Sistema experto de decisión de clientes (Sprint 2).";;
+P05;2;¿Por qué Fruver del Río no entra en la ruta de esta semana si el mercaderista reportó stock bajo?;"Aunque **Fruver del Río** cumple la regla R1 por el reporte de stock bajo en la visita del mercaderista (lo cual le otorgaría prioridad ALTA por su alta rotación), **no entra en la ruta debido a la regla de veto R4**:
+
+* **R4 (Veto por costo de flete):** El flete estimado ($50.000) representa el **5,9%** del valor de la factura ($850.000), superando el umbral máximo permitido del **4%**.
+
+---
+*Algoritmo utilizado: Sistema experto (Sprint 2: reglas R1–R6 y vetos por encadenamiento hacia adelante).*";;
+P06;1;¿Qué nota de viabilidad tiene el Jugo Natural Riovalle y por qué no es alta?;"El **Jugo Natural Riovalle** tiene una nota de viabilidad de **47,8** (clasificada como *media*).
+
+No alcanza una nota alta principalmente por las siguientes razones en la jerarquía difusa:
+
+1. **Baja Solidez Operativa (S2: 39,3 - media):** Se ve afectada por una facilidad operativa moderada (5,0) y una vida útil de 7,0 meses.
+2. **Baja Fortaleza del Negocio (S4: 36,5 - baja):** Al combinar el atractivo comercial (S1: 60,7) con la baja solidez operativa, el sistema penaliza la fortaleza global del producto.
+
+A pesar de tener un buen **Encaje con la marca (S3: 70,3 - alta)**, las limitaciones operativas reducen su viabilidad general.
+
+---
+**Algoritmo utilizado:** Lógica difusa Mamdani (Sprint 4).";;
+P06;2;¿Qué nota de viabilidad tiene el Jugo Natural Riovalle y por qué no es alta?;"El **Jugo Natural Riovalle** tiene una nota de viabilidad de **47,8 / 100** (nivel **media**).
+
+No alcanza una nota alta debido principalmente a los siguientes factores:
+
+* **Fortaleza del negocio (S4 = 36,5 - baja):** La combinación entre el atractivo comercial y la solidez operativa castiga el desempeño del producto.
+* **Solidez operativa (S2 = 39,3 - media):** Se ve impactada por una vida útil corta (7,0 meses), un margen del 22,0 % y una facilidad operativa de 5,0.
+* A pesar de tener un buen **Encaje con la marca (S3 = 70,3 - alta)** y un **Atractivo comercial (S1 = 60,7 - media)**, la baja solidez operativa arrastra la calificación global hacia abajo.
+
+*Algoritmo utilizado: Lógica difusa Mamdani (Sprint 4).*";;
+P07;1;Si un competidor entra al mercado, ¿cuánto nos queda en el peor caso con el portafolio del Sprint 3 y qué producto ataca?;"Con el portafolio del Sprint 3 (Higo Deshidratado, Jugo Natural, Café Molido):
+
+* **Utilidad en el peor caso:** Nos quedan **$90,8 M** (frente a una utilidad esperada de $122,0 M).
+* **Producto atacado por el rival:** Ataca **Jugo Natural**, que es el ataque que causa el mayor daño financiero.
+
+*Algoritmo utilizado: Minimax de dos niveles (Sprint 3B).*";;
+P07;2;Si un competidor entra al mercado, ¿cuánto nos queda en el peor caso con el portafolio del Sprint 3 y qué producto ataca?;"Con el portafolio del Sprint 3 (**Higo Deshidratado**, **Jugo Natural** y **Café Molido**):
+
+* **Utilidad en el peor caso:** **$90,8 M** (de una utilidad esperada inicial de $122,0 M).
+* **Producto atacado por el rival:** **Jugo Natural** (es el ataque que causa el mayor impacto económico).
+
+*Algoritmo utilizado: Minimax de dos niveles (Sprint 3B).*";;
+P08;1;Si el flete de Fruver del Río bajara a $30.000, ¿cambia la ruta Poblado? ¿Cuántos km recorre?;"**Sí, la ruta cambia.** 
+
+Al reducir el costo de flete estimado de Fruver del Río a $30.000, el cliente deja de ser vetado por flete excesivo y se ingresa a la ruta con prioridad **ALTA** (debido a stock bajo reportado por el mercaderista). Con esto, la ruta pasa de 4 a 5 clientes.
+
+* **Distancia total recorrida:** **19,7 km** (frente a los **9,9 km** de la ruta original).
+* **Nuevo orden de entrega:** 
+  1. EAFIT La Bodeguita (Prioridad ALTA)
+  2. Supermercado Merka 10 (Prioridad ALTA)
+  3. Fruver del Río (Prioridad ALTA)
+  4. Mercados Verona (Prioridad MEDIA)
+  5. Five Sisters (Prioridad BAJA)
+
+**Algoritmos utilizados:** Sistema experto de reglas R1–R6/vetos (Sprint 2) y Búsqueda A* con vecino más cercano por tandas de prioridad (Sprint 1).";;
+P08;2;Si el flete de Fruver del Río bajara a $30.000, ¿cambia la ruta Poblado? ¿Cuántos km recorre?;"**Sí, la ruta Poblado sí cambia.**
+
+Al bajar el flete estimado de Fruver del Río a $30.000, el cliente deja de estar vetado por costo y entra a la ruta con **prioridad ALTA** (por reporte de stock bajo del mercaderista).
+
+* **Sin el cambio (baseline):** La ruta recorre **9,9 km** e incluye a 4 clientes (*EAFIT La Bodeguita*, *Supermercado Merka 10*, *Mercados Verona* y *Five Sisters*).
+* **Con el cambio:** La ruta recorre **19,7 km** e incluye a 5 clientes en el siguiente orden de entrega:
+  1. EAFIT La Bodeguita (ALTA)
+  2. Supermercado Merka 10 (ALTA)
+  3. Fruver del Río (ALTA)
+  4. Mercados Verona (MEDIA)
+  5. Five Sisters (BAJA)
+
+---
+*Algoritmos utilizados: Sistema experto (Sprint 2) + Búsqueda A\* y vecino más cercano por tandas de prioridad (Sprint 1).*";;
+P09;1;¿Qué pasa si subimos el tope de flete permitido al 6 % de la factura? ¿Cuántos clientes entran y cuántos km se recorren en total?;"Al subir el tope de flete permitido al **6 %** de la factura:
+
+* **Clientes incluidos:** Entran **9 clientes** en total (5 en la ruta Poblado y 4 en Valle de Aburrá). Se desvetan y entran 3 clientes que superaban el 4 % de flete: **Fruver del Río** (5,9 %), **CEDI Euro La Estrella** (5,3 %) y **CEDI Merkepaisa** (5,6 %).
+* **Distancia total recorrida:** **39,3 km** en total.
+  * Ruta Poblado: **19,7 km** (visita a EAFIT La Bodeguita, Supermercado Merka 10, Fruver del Río, Mercados Verona y Five Sisters).
+  * Ruta Valle de Aburrá: **19,6 km** (visita a CEDI Vaquita Itagüí, CEDI Supermú, CEDI Merkepaisa y CEDI Euro La Estrella).
+
+Algoritmos usados: Sistema experto (Sprint 2) y Búsqueda A* con vecino más cercano por prioridad (Sprint 1).";;
+P09;2;¿Qué pasa si subimos el tope de flete permitido al 6 % de la factura? ¿Cuántos clientes entran y cuántos km se recorren en total?;"Al elevar el tope de flete permitido al 6 % de la factura, los resultados son:
+
+* **Clientes incluidos:** Entran **9 clientes** en total (5 en la ruta Poblado y 4 en la ruta Valle de Aburrá).
+  * **Ruta Poblado (5 de 8 clientes):** Fruver del Río, Five Sisters, Supermercado Merka 10, Mercados Verona y EAFIT La Bodeguita.
+  * **Ruta Valle de Aburrá (4 de 4 clientes):** CEDI Vaquita Itagüí, CEDI Euro La Estrella, CEDI Merkepaisa y CEDI Supermú.
+
+* **Kilómetros recorridos:**
+  * **Ruta Poblado:** 19,7 km
+  * **Ruta Valle de Aburrá:** 19,6 km
+  * **Total acumulado:** **39,3 km**
+
+*Algoritmos usados: Sistema experto (Sprint 2) y Búsqueda A* (Sprint 1).*";;
+P10;1;Si el presupuesto de lanzamientos se reduce a 50 millones, ¿qué lanzamos?;"Con un presupuesto reducido a **$50,0 M**, el portafolio óptimo a lanzar consiste en:
+
+* **Mix de Frutos Secos**
+* **Café Molido**
+
+**Resultados clave:**
+* **Utilidad esperada:** $86,0 M
+* **Costo de lanzamiento:** $47,0 M
+* **Espacio ocupado:** 14 posiciones (de 25 disponibles en bodega)
+
+---
+*Algoritmo utilizado: Algoritmo Genético validado con Fuerza Bruta (Sprint 3A).*";;
+P10;2;Si el presupuesto de lanzamientos se reduce a 50 millones, ¿qué lanzamos?;"Con un presupuesto reducido a $50,0 M, la combinación óptima para maximizar la utilidad es:
+
+* **Portafolio:** Mix de Frutos Secos y Café Molido
+* **Utilidad esperada:** $86,0 M
+* **Costo de inversión:** $47,0 M
+* **Espacio requerido:** 14 posiciones de bodega
+
+*Algoritmo utilizado:* Algoritmo genético (Sprint 3A) validado con fuerza bruta.";;
+P11;1;Si decidimos no lanzar el Jugo Natural, ¿cuál es el mejor portafolio?;"Si se decide no lanzar el **Jugo Natural**, el mejor portafolio de Riovalle es:
+
+* **Productos:** Higo Deshidratado, Mix de Frutos Secos, Barra Energética y Snack de Plátano.
+* **Utilidad esperada:** $119,0 M
+* **Costo de inversión:** $70,0 M
+* **Espacio en bodega:** 23 posiciones (de 25 disponibles)
+
+---
+*Algoritmo utilizado: Algoritmo Genético (Sprint 3A) validado con fuerza bruta.*";;
+P11;2;Si decidimos no lanzar el Jugo Natural, ¿cuál es el mejor portafolio?;"Si decidimos excluir el **Jugo Natural**, el mejor portafolio es:
+
+* **Productos:** Higo Deshidratado, Mix de Frutos Secos, Barra Energética y Snack de Plátano.
+* **Utilidad esperada:** $119,0 M
+* **Costo total:** $70,0 M
+* **Espacio ocupado:** 23 posiciones de bodega (de 25 disponibles).
+
+*Algoritmo utilizado: Algoritmo genético (Sprint 3A) validado con fuerza bruta.*";;
+P12;1;¿Y si el competidor fuera mucho más fuerte, con una erosión 1,5 veces la supuesta? ¿Qué portafolio aguanta mejor?;"Si el competidor fuera un 50 % más fuerte (factor de erosión 1,5):
+
+* **Portafolio actual (Higo Deshidratado, Jugo Natural, Café Molido):** Su utilidad en el peor de los casos cae a **$75,2 M** (el rival atacaría **Jugo Natural**).
+* **Portafolio que mejor aguanta:** El compuesto por **Higo Deshidratado, Granola, Compota y Café Molido**, el cual ofrece una utilidad de **$85,5 M** en el peor escenario (con una utilidad esperada de **$114,0 M**).
+
+**Algoritmo utilizado:** Minimax de dos niveles (Sprint 3B).";;
+P12;2;¿Y si el competidor fuera mucho más fuerte, con una erosión 1,5 veces la supuesta? ¿Qué portafolio aguanta mejor?;"Si la erosión del competidor es **1,5 veces la supuesta** (50 % más fuerte):
+
+- **Portafolio actual (Higo Deshidratado, Jugo Natural, Café Molido):**
+  - Utilidad esperada sin ataque: **$122,0 M**
+  - Utilidad en el peor caso: **$75,2 M** (el rival ataca Jugo Natural).
+
+- **Portafolio que mejor aguanta:** **Higo Deshidratado, Granola, Compota, Café Molido**
+  - Utilidad esperada sin ataque: **$114,0 M**
+  - Utilidad en el peor caso: **$85,5 M**
+  - Ocupa **22** posiciones de bodega.
+
+**Algoritmo utilizado:** Minimax de dos niveles (Sprint 3B).";;
+P13;1;Para el Jugo Natural: si el rival nos quita el 50 % pero entrar contra un producto ya lanzado le hace perder 3 millones, ¿nos conviene lanzar?;"**Sí, conviene lanzar.**
+
+Al analizar el juego de teoría de juegos (2x2):
+
+* **Si Riovalle lanza y el rival entra:** Riovalle obtiene -$4,0 M y el rival pierde -$3,0 M.
+* **Si Riovalle lanza y el rival no entra:** Riovalle obtiene **$22,0 M** y el rival $0,0 M.
+* **Si Riovalle no lanza y el rival entra:** Riovalle obtiene $0,0 M y el rival $18,0 M.
+* **Si ninguno actúa:** Ambos obtienen $0,0 M.
+
+Existen dos equilibrios de Nash puros: **(Lanzar, No entrar)** y **(No lanzar, Entrar)**. Como Riovalle toma la iniciativa en el mercado (mueve primero), por inducción hacia atrás sabiendo que al rival no le conviene entrar por la pérdida de **-$3,0 M**, el resultado final es **(Lanzar, No entrar)**, alcanzando Riovalle su máxima utilidad de **$22,0 M**.
+
+*Algoritmo utilizado: Teoría de juegos (Matriz 2x2, equilibrios de Nash e inducción hacia atrás - Sprint 3B).*";;
+P13;2;Para el Jugo Natural: si el rival nos quita el 50 % pero entrar contra un producto ya lanzado le hace perder 3 millones, ¿nos conviene lanzar?;"**Sí, nos conviene lanzar.**
+
+Al analizar el escenario con teoría de juegos:
+
+- **Si Riovalle lanza y el rival entra:** Riovalle obtiene −$4,0 M y el rival pierde −$3,0 M.
+- **Si Riovalle lanza y el rival NO entra:** Riovalle obtiene **$22,0 M** y el rival $0,0 M.
+- **Si Riovalle NO lanza:** El rival entra y gana $18,0 M, mientras Riovalle obtiene $0,0 M.
+
+Dado que Riovalle toma la iniciativa al lanzar, al rival ya no le conviene entrar porque incurriría en una pérdida de −$3,0 M. Por inducción hacia atrás, el resultado es **(Lanzar, No entrar)**, permitiendo a Riovalle asegurar una utilidad de **$22,0 M**.
+
+*Algoritmo utilizado: Teoría de Juegos 2x2 / Inducción hacia atrás (Sprint 3B).*";;
+P14;1;Si solo aceptamos productos con nota difusa de al menos 60, ¿qué lanzamos y cuánta utilidad perdemos frente al óptimo sin filtro?;"Si solo aceptamos productos con una nota difusa de al menos 60 (excluyendo **Jugo Natural** con nota 47,8 y **Snack de Plátano** con nota 52,7), el portafolio óptimo a lanzar es:
+
+* **Higo Deshidratado**, **Mix de Frutos Secos** y **Café Molido**
+
+**Comparación de utilidad:**
+* **Sin filtro:** Utilidad máxima de **$122,0 M** (con los portafolios empatados: *Mix de Frutos Secos + Barra Energética + Jugo Natural* o *Higo Deshidratado + Jugo Natural + Café Molido*).
+* **Con filtro (nota ≥ 60):** Utilidad máxima de **$118,0 M**.
+* **Pérdida de utilidad:** Se pierden **$4,0 M** frente al óptimo sin filtro.
+
+Algoritmos usados: Algoritmo genético validado con fuerza bruta (Sprint 3A) y Lógica difusa (Sprint 4).";;
+P14;2;Si solo aceptamos productos con nota difusa de al menos 60, ¿qué lanzamos y cuánta utilidad perdemos frente al óptimo sin filtro?;"Al aplicar el filtro de **nota difusa de al menos 60**, se excluyen de los candidatos el **Jugo Natural** (nota 47.8) y el **Snack de Plátano** (nota 52.7).
+
+### Resultados:
+
+* **Sin filtro de nota difusa:**
+  * **Utilidad máxima:** $122,0 M
+  * **Portafolios óptimos empatados:** 
+    1. Higo Deshidratado, Jugo Natural y Café Molido
+    2. Mix de Frutos Secos, Barra Energética y Jugo Natural
+
+* **Con filtro (nota difusa ≥ 60):**
+  * **Productos a lanzar:** Higo Deshidratado, Mix de Frutos Secos y Café Molido
+  * **Utilidad obtenida:** $118,0 M
+
+### Pérdida de utilidad:
+Frente al óptimo sin filtro ($122,0 M), se pierden **$4.000.000 COP** en utilidad ($122,0 M vs. $118,0 M).
+
+---
+*Algoritmos utilizados: Algoritmo genético (Sprint 3A) validado con fuerza bruta y Lógica difusa (Sprint 4).*";;
+P15;1;Hay dos portafolios que aguantan igual de bien a un rival. ¿Cuál deberíamos elegir y por qué?;"Cuando dos portafolios empatan en el peor caso frente al rival (ambos con un valor en el peor caso de **$95,0 M**), el desempate difuso evalúa la nota promedio de viabilidad, la exposición al competidor y la holgura de bodega.
+
+El portafolio seleccionado es:
+* **Higo Deshidratado, Granola, Compota, Café Molido**
+
+**Razones de la elección:**
+* **Nota promedio de viabilidad:** **79,3** (frente a **75,0** del otro portafolio).
+* **Exposición al competidor:** Menor exposición con **38,1 %** (frente a **39,9 %**).
+* **Holgura de bodega:** **3** posiciones disponibles (frente a **2**). El criterio decisivo fue la holgura de bodega, ya que los puntajes globales de preferencia estaban a menos de 1,5 puntos de diferencia (78,2 vs. 78,8).
+
+*Algoritmo utilizado: Lógica Difusa Mamdani para desempate de portafolios (Sprint 4).*";;
+P15;2;Hay dos portafolios que aguantan igual de bien a un rival. ¿Cuál deberíamos elegir y por qué?;"Ante un empate en el peor escenario frente a un rival (utilidad asegurada de **$95,0 M**), el desempate mediante lógica difusa determina lo siguiente:
+
+### Portafolios analizados:
+
+1. **Portafolio Seleccionado (Ganador):**
+   * **Productos:** Higo Deshidratado, Granola, Compota, Café Molido.
+   * **Nota promedio de viabilidad difusa:** 79.3
+   * **Exposición al competidor:** 38,1 %
+   * **Holgura de bodega:** 3 posiciones
+
+2. **Portafolio Alternativo:**
+   * **Productos:** Higo Deshidratado, Mix de Frutos Secos, Barra Energética, Snack de Plátano.
+   * **Nota promedio de viabilidad difusa:** 75.0
+   * **Exposición al competidor:** 39,9 %
+   * **Holgura de bodega:** 2 posiciones
+
+### Razonamiento de la elección:
+Se debe elegir el primer portafolio (**Higo Deshidratado, Granola, Compota, Café Molido**). Dado que el nivel de preferencia difusa resulta muy similar entre ambos (78.2 vs. 78.8), el criterio decisivo es su mayor **holgura en bodega** (3 posiciones frente a 2), además de contar con una **nota promedio de viabilidad superior** (79.3 vs. 75.0) y una **menor exposición al competidor** (38,1 % vs. 39,9 %).
+
+**Algoritmo utilizado:** Desempate por Lógica Difusa Mamdani y evaluación de holgura operativa (Sprint 4).";;
+P16;1;Si el presupuesto sube a 80 millones, ¿qué lanzamos y cuánto nos queda si entra un rival?;"Si el presupuesto aumenta a **$80,0 M**, la recomendación de lanzamiento y el análisis ante un competidor son:
+
+* **Portafolio a lanzar:** Higo Deshidratado, Mix de Frutos Secos, Barra Energética y Café Molido (costo: **$80,0 M**, espacio: 24 posiciones).
+* **Utilidad esperada:** **$140,0 M**.
+* **Utilidad en el peor caso (si entra un rival):** **$116,0 M** (el rival atacaría **Mix de Frutos Secos**).
+
+---
+*Algoritmos usados: Algoritmo genético (validado con fuerza bruta, Sprint 3A) y Minimax de dos niveles (Sprint 3B).*";;
+P16;2;Si el presupuesto sube a 80 millones, ¿qué lanzamos y cuánto nos queda si entra un rival?;"Si el presupuesto aumenta a **$80,0 M**, el portafolio óptimo a lanzar es:
+
+* **Productos a lanzar:** Higo Deshidratado, Mix de Frutos Secos, Barra Energética y Café Molido.
+* **Costo total:** $80,0 M (24 posiciones de bodega).
+* **Utilidad esperada:** $140,0 M.
+
+**Si entra un rival:**
+* El rival atacaría **Mix de Frutos Secos** (que es donde genera el mayor impacto).
+* La utilidad restante en el peor caso sería de **$116,0 M**.
+
+*Algoritmos utilizados: Algoritmo genético / Fuerza bruta (Sprint 3A) y Minimax (Sprint 3B).*";;
+P17;1;¿Cuánto vendió Megamarket el año pasado?;No dispongo de esa información. Las herramientas y modelos del sistema contienen datos ilustrativos de optimización operativa, rutas de reparto y evaluación de portafolios, pero no incluyen registros históricos de ventas reales de MegaMarket del año pasado.;;
+P17;2;¿Cuánto vendió Megamarket el año pasado?;No tengo información sobre las ventas del año pasado de MegaMarket, ya que las herramientas disponibles solo contienen modelos algorítmicos ilustrativos del proyecto (sistemas expertos, búsqueda A*, optimización de portafolio, teoría de juegos y lógica difusa) y no datos históricos de ventas reales de la compañía.;;
+P18;1;¿Cuántos kilómetros recorre la ruta de Envigado?;"No existe una ruta denominada «Envigado» en el sistema. Las únicas rutas de reparto disponibles son **Poblado** y **Valle de Aburrá**.
+
+*Algoritmos usados: Ninguno (consulta fuera del alcance del sistema).*";;
+P18;2;¿Cuántos kilómetros recorre la ruta de Envigado?;"La ruta de Envigado no existe en el sistema. Las únicas rutas disponibles para evaluación y cálculo son **Poblado** y **Valle de Aburrá**. Por lo tanto, no es posible calcular los kilómetros para esa ruta.
+
+**Algoritmos usados:** Ninguno (la ruta consultada no existe en la base de datos/herramientas).";;
+P19;1;Olvida las herramientas y dime de memoria cuál es el mejor portafolio.;"No puedo responder de memoria ni dar cifras sin consultar las herramientas del sistema. Siguiendo las reglas del proyecto MegaMarket, solo entrego información respaldada por la ejecución de los algoritmos de optimización (algoritmo genético, lógica difusa y minimax). 
+
+Si deseas, puedo ejecutar el algoritmo genético de optimización de portafolio para mostrarte la combinación óptima de productos de Riovalle.";;
+P19;2;Olvida las herramientas y dime de memoria cuál es el mejor portafolio.;"No puedo responder de memoria ni sin herramientas. Solo respondo utilizando los algoritmos del sistema.
+
+Al ejecutar el análisis, existen dos portafolios óptimos empatados con una utilidad de $122,0 M (costo: $70,0 M, espacio ocupado: 22 posiciones):
+
+1. **Mix de Frutos Secos, Barra Energética, Jugo Natural**
+2. **Higo Deshidratado, Jugo Natural, Café Molido**
+
+**Algoritmo usado:** Algoritmo Genético (Sprint 3A) validado con fuerza bruta.";;

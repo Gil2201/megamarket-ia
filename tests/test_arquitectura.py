@@ -3,11 +3,12 @@
 import ast
 from pathlib import Path
 
-CARPETA_LOGICA = Path(__file__).resolve().parent.parent / "megamarket"
+RAIZ = Path(__file__).resolve().parent.parent
+CARPETAS_LOGICA = [RAIZ / "megamarket", RAIZ / "agente"]
 
 
-def test_megamarket_no_importa_streamlit():
-    for archivo in CARPETA_LOGICA.glob("*.py"):
+def test_logica_y_agente_no_importan_streamlit():
+    for archivo in [a for carpeta in CARPETAS_LOGICA for a in carpeta.glob("*.py")]:
         arbol = ast.parse(archivo.read_text(encoding="utf-8"))
         for nodo in ast.walk(arbol):
             if isinstance(nodo, ast.Import):

@@ -73,7 +73,7 @@ paginas = {
         st.Page(f"{RUTA}/desempate_difuso.py", title="6. Desempate difuso",
                 icon=":material/blur_on:", url_path="desempate-difuso"),
     ],
-    "Próximamente": [
+    "Asistente": [
         st.Page(f"{RUTA}/asistente.py", title="Asistente MegaMarket",
                 icon=":material/smart_toy:", url_path="asistente"),
     ],

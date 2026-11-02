@@ -21,6 +21,7 @@ La navegación sigue dos cadenas de decisión del negocio:
 | Portafolio | 4. Qué lanzar | Sprint 3A · Algoritmo genético | ¿Qué referencias caben y dejan más utilidad? |
 | Portafolio | 5. Competidor | Sprint 3B · Teoría de juegos + Minimax | ¿Y si un rival reacciona? |
 | Portafolio | 6. Desempate difuso | Sprint 4 · Lógica difusa | ¿Cuál elegimos entre portafolios empatados? |
+| Asistente | Asistente MegaMarket | Fase 6 · Agente con herramientas | Preguntas en lenguaje natural que se responden corriendo los algoritmos |
 
 Las páginas se pasan resultados: el sistema experto le entrega sus clientes a la ruta, y el AG le entrega
 su portafolio al análisis del competidor. Cada página muestra cómo razonó el algoritmo, el código real
@@ -36,6 +37,20 @@ streamlit run app.py
 ```
 
 Probada con Python 3.14.
+
+## Asistente (opcional)
+
+El asistente usa Gemini en su capa gratuita a través de una API compatible con OpenAI. Para activarlo,
+crea `.streamlit/secrets.toml` (está en `.gitignore`) con:
+
+```toml
+GEMINI_API_KEY = "tu-clave-de-google-ai-studio"
+APP_PASSWORD = "opcional: contraseña para el asistente"
+```
+
+En Streamlit Cloud, el mismo contenido va en *Settings → Secrets*. Sin clave, el resto de la app funciona igual.
+El modelo **no decide**: interpreta la pregunta y llama herramientas (`agente/herramientas.py`) que envuelven los
+algoritmos de `megamarket/`; cada respuesta muestra qué herramientas usó.
 
 ## Pruebas
 
@@ -54,6 +69,8 @@ que abren cada página.
 app.py              navegación y estado compartido
 megamarket/         lógica pura (sin Streamlit), portada de los notebooks
 megamarket_app/     interfaz: páginas, tema, mapas, gráficas
+agente/             asistente: herramientas, ciclo del agente y proveedor (sin Streamlit)
+evaluacion_agente/  19 preguntas de prueba, evaluador y calificador del asistente
 data/               memorias de trabajo del Sprint 2 (CSV)
 referencia/         notebooks originales de cada sprint (solo lectura)
 docs/               SPEC.md y diseño del Sprint 4

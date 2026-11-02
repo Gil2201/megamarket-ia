@@ -1,7 +1,7 @@
 # Agente — preguntas de prueba para elegir proveedor
 
-> El agente **todavía no existe**. Estas preguntas sirven para comparar proveedores de IA
-> (Claude, Qwen, DeepSeek, Gemini…) con datos y no con intuición, antes de implementarlo.
+> Estas preguntas sirven para comparar proveedores de IA (Claude, Qwen, DeepSeek, Gemini…) con
+> datos y no con intuición. El agente está en [`agente/`](../agente/) y la página «Asistente MegaMarket».
 > Fuente única: [`evaluacion_agente/preguntas.py`](../evaluacion_agente/preguntas.py).
 > Las respuestas correctas **se calculan con el código de `megamarket/`**; el JSON exportado
 > ([`preguntas_prueba.json`](../evaluacion_agente/preguntas_prueba.json)) se regenera con
@@ -57,8 +57,39 @@ de su memoria.
 **Aprueba** un proveedor si cumple "no inventa" en el **100 %** de las preguntas y suma al
 menos el **80 %** del puntaje total. Entre los que aprueben, se elige el más barato.
 
-## Cómo se usará
-Cuando se construya el agente, un script correrá las 19 preguntas con cada proveedor
-(mismo prompt y mismas herramientas, solo cambia el adaptador), guardará las llamadas a
-herramientas y las respuestas, y calificará los puntos 1–4 automáticamente; el 5 lo revisa
-el equipo. Costo estimado por proveedor: centavos de dólar.
+## Cómo correr la evaluación
+```bash
+python -m evaluacion_agente.correr                      # Gemini 3.6 Flash, 19 preguntas × 2
+python -m evaluacion_agente.correr --modelo gemini-3.5-flash --repeticiones 1
+python -m evaluacion_agente.correr --solo P08,P16       # solo algunas preguntas
+```
+Lee la clave de `.streamlit/secrets.toml`. Deja en `evaluacion_agente/resultados/`:
+- `<modelo>.md`: resumen con el puntaje automático (puntos 1–4) y las cifras inventadas.
+- `<modelo>.jsonl`: cada respuesta con su traza de herramientas.
+- `<modelo>_claridad.csv`: para que el equipo califique el punto 5 a mano (0/1).
+
+El calificador ([`calificar.py`](../evaluacion_agente/calificar.py)) revisa que **cada número de la
+respuesta aparezca en algún resultado de herramienta o en la pregunta** (acepta sumas/restas de
+dos de ellos y enteros pequeños como "Sprint 3"); si no, cuenta como cifra inventada.
+
+Para probar otro proveedor compatible con OpenAI (Qwen, DeepSeek, Ollama) basta agregarlo en
+[`agente/proveedor.py`](../agente/proveedor.py) y correr con `--proveedor`.
+
+## Resultado (2 de noviembre de 2026)
+
+Gemini 3.6 Flash (plan de pago), 19 preguntas × 2 repeticiones = 38 respuestas:
+
+| Corrida | Puntaje automático | Cifras inventadas | Costo |
+|---|---|---|---|
+| 1.ª | 90,8 % | 2 | US$0,18 |
+| 2.ª (con ajustes) | **99,3 %** | **0** | US$0,19 |
+
+Ajustes entre corridas (ninguno toca los algoritmos de los sprints):
+- `juego_producto`: los pagos del rival pasaron a ser opcionales con los valores del notebook por defecto;
+  antes eran obligatorios y el modelo tuvo que inventar uno que la pregunta no daba (P13).
+- Calificador: acepta nombres parciales que la herramienta resuelve ("Alquería"), el "50 %" que equivale a
+  "1,5 veces", la negativa sin cifras en P19, y no exige pasos que la herramienta ya hace por dentro (P14, P15).
+
+Único punto perdido: P02 (1.ª repetición) dio los km pero no el orden de entrega. La capa gratuita
+(20 solicitudes por día) no alcanza ni para una corrida; por eso se activó la facturación con un tope de gasto.
+Detalle en [`resultados/gemini-3.6-flash.md`](../evaluacion_agente/resultados/gemini-3.6-flash.md).

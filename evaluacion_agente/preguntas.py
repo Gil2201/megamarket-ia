@@ -241,7 +241,7 @@ def construir_preguntas():
          "pregunta": "¿Qué pasa si subimos el tope de flete permitido al 6 % de la factura? ¿Cuántos clientes entran y cuántos km se recorren en total?",
          "herramientas": ["calcular_ruta"],
          "argumentos_clave": {"umbrales": {"flete_sobre_factura": 0.06}},
-         "hechos": {"clientes_incluidos": sum(r["incluidos"] for r in flete_6.values()), "clientes_total": 12,
+         "hechos": {"clientes_incluidos": sum(r["incluidos"] for r in flete_6.values()),
                     "km_poblado": flete_6["Poblado"]["km"], "km_valle": flete_6["Valle de Aburrá"]["km"],
                     "km_total": round(flete_6["Poblado"]["km"] + flete_6["Valle de Aburrá"]["km"], 1)},
          "debe_mencionar": ["las dos rutas"],
@@ -276,7 +276,7 @@ def construir_preguntas():
         # -------------------------------------------------------------- cadena
         {"id": "P14", "categoria": "cadena",
          "pregunta": "Si solo aceptamos productos con nota difusa de al menos 60, ¿qué lanzamos y cuánta utilidad perdemos frente al óptimo sin filtro?",
-         "herramientas": ["nota_viabilidad", "optimizar_portafolio"],
+         "herramientas": ["optimizar_portafolio"],  # con nota_minima ya calcula las notas difusas
          "argumentos_clave": {"nota_minima": 60},
          "hechos": {"utilidad": optimo_nota_60["utilidad"], "portafolios_empatados": optimo_nota_60["portafolios"],
                     "excluidos": _corto(sorted(k for k in CANDIDATOS if notas[k] < 60)),
@@ -284,7 +284,7 @@ def construir_preguntas():
          "no_debe": ["inventar notas de los productos"]},
         {"id": "P15", "categoria": "cadena",
          "pregunta": "Hay dos portafolios que aguantan igual de bien a un rival. ¿Cuál deberíamos elegir y por qué?",
-         "herramientas": ["analizar_competidor", "desempatar_portafolios"],
+         "herramientas": ["desempatar_portafolios"],  # ya corre el Minimax para hallar los empatados
          "argumentos_clave": {"criterio": "peor_caso"},
          "hechos": {"peor_caso": opt_mm, "ganador": _corto(ranking_mm[0]["productos"]),
                     "criterio_ganador": ranking_mm[0]["criterio"]},
