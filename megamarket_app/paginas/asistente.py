@@ -10,7 +10,7 @@ from agente.herramientas import ejecutar_herramienta
 from agente.proveedor import PROVEEDORES, crear_cliente
 from megamarket_app import componentes
 
-MAX_PREGUNTAS = 20  # por sesión, para cuidar la cuota gratuita
+MAX_PREGUNTAS = 20  # por sesión, para cuidar el presupuesto del proyecto
 TURNOS_DE_CONTEXTO = 6
 PROVEEDOR = "gemini"
 SUGERENCIAS = [
@@ -82,8 +82,8 @@ usadas = st.session_state.setdefault("preguntas_asistente", 0)
 
 c1, c2 = st.columns([3, 1], vertical_alignment="center")
 c1.caption(
-    f"Usa **{PROVEEDORES[PROVEEDOR]['modelo']}** (Google) en su capa gratuita: Google puede usar las preguntas para "
-    "mejorar sus productos, así que no escribas datos personales. Los datos del caso son ilustrativos. "
+    f"Usa **{PROVEEDORES[PROVEEDOR]['modelo']}** (Google): las preguntas se envían a Google para responderlas, "
+    "así que no escribas datos personales. Los datos del caso son ilustrativos. "
     f"Preguntas en esta sesión: **{usadas} de {MAX_PREGUNTAS}**."
 )
 if c2.button("Nueva conversación", icon=":material/refresh:", width="stretch", disabled=not historial):
@@ -126,7 +126,7 @@ if pregunta and not agotadas:
                 except (openai.NotFoundError, openai.PermissionDeniedError):
                     r = bucle.responder(pregunta, cliente, config["modelo_respaldo"], historial=contexto)
             except openai.RateLimitError:
-                r = {"texto": "Se agotó por ahora la cuota gratuita de Gemini. Intenta de nuevo en un minuto.", "traza": []}
+                r = {"texto": "Gemini recibió demasiadas preguntas seguidas o se alcanzó el tope de gasto del proyecto. Intenta de nuevo en un minuto.", "traza": []}
             except openai.APIError as error:
                 r = {"texto": f"No pude consultar el modelo ({type(error).__name__}). Intenta de nuevo.", "traza": []}
     historial.append({"rol": "assistant", "texto": r["texto"], "traza": r["traza"]})
@@ -142,7 +142,8 @@ componentes.supuestos_y_limites([
     "Compara con el panel de herramientas.",
     "Se evaluó con 19 preguntas de prueba (docs/AGENTE_PREGUNTAS_PRUEBA.md): 99,3 % en el calificador automático "
     "y ninguna cifra inventada en 38 respuestas.",
-    "Capa gratuita de Gemini: límites de uso diarios y uso de las preguntas por parte de Google. Por eso hay un "
-    f"tope de {MAX_PREGUNTAS} preguntas por sesión.",
+    "Gemini se usa en el plan de pago con un tope de gasto bajo (cada pregunta cuesta unos 20 pesos). La capa "
+    "gratuita (20 solicitudes al día) no alcanzaba. Por eso hay un tope de "
+    f"{MAX_PREGUNTAS} preguntas por sesión.",
     "Los cambios que pidas en el chat (fletes, presupuesto…) son hipotéticos: no modifican los datos de las demás páginas.",
 ])

@@ -40,7 +40,8 @@ Probada con Python 3.14.
 
 ## Asistente (opcional)
 
-El asistente usa Gemini en su capa gratuita a través de una API compatible con OpenAI. Para activarlo,
+El asistente usa Gemini 3.6 Flash a través de una API compatible con OpenAI, en el plan de pago con tope de
+gasto (unos 20 pesos por pregunta; la capa gratuita solo da 20 solicitudes al día). Para activarlo,
 crea `.streamlit/secrets.toml` (está en `.gitignore`) con:
 
 ```toml

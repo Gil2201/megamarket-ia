@@ -7,7 +7,7 @@ agente (bucle.py) no cambia.
 from openai import OpenAI
 
 PROVEEDORES = {
-    # Capa gratuita de Google AI Studio. gemini-3.8-flash no está habilitado sin facturación.
+    # Google AI Studio, plan de pago con tope de gasto (la capa gratuita da 20 solicitudes al día).
     "gemini": {
         "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
         "modelo": "gemini-3.6-flash",
